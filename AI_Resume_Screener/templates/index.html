@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Resume Screener
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <header>
+
+        <h1>
+            AI Resume Screener
+        </h1>
+
+        <p>
+            CSP + Constraint Propagation +
+            Backtracking + Best-First Search
+        </p>
+
+        <span class="badge">
+            Pure AI • No ML • No DL
+        </span>
+
+    </header>
+
+
+    <section class="card">
+
+        <h2>
+            1. Job Requirements
+        </h2>
+
+
+        <form id="screenForm">
+
+
+            <label>
+                Required Skills
+            </label>
+
+            <input
+                type="text"
+                name="required_skills"
+                placeholder="Python, SQL, C"
+                value="Python, SQL"
+                required
+            >
+
+            <small>
+                All these skills are treated as
+                hard CSP constraints.
+            </small>
+
+
+            <label>
+                Preferred Skills
+            </label>
+
+            <input
+                type="text"
+                name="preferred_skills"
+                placeholder="Power BI, Git, Java"
+                value="Git, Power BI"
+            >
+
+
+            <label>
+                Required Degree
+            </label>
+
+            <input
+                type="text"
+                name="degree"
+                value="B.E/B.Tech CSE"
+                required
+            >
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Minimum CGPA
+                    </label>
+
+                    <input
+                        type="number"
+                        name="min_cgpa"
+                        value="7"
+                        step="0.1"
+                        min="0"
+                        max="10"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Minimum Experience
+                        (years)
+                    </label>
+
+                    <input
+                        type="number"
+                        name="min_experience"
+                        value="0"
+                        step="0.1"
+                        min="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Upload Resumes
+            </label>
+
+            <input
+                type="file"
+                name="resumes"
+                id="resumes"
+                accept=".pdf,.docx,.txt"
+                multiple
+                required
+            >
+
+
+            <button type="submit">
+
+                Run AI Screening
+
+            </button>
+
+
+        </form>
+
+    </section>
+
+
+    <section
+        id="loading"
+        class="card hidden"
+    >
+
+        <h2>
+            Processing...
+        </h2>
+
+        <p>
+            Applying CSP →
+            Constraint Propagation →
+            Backtracking →
+            Heuristic Search.
+        </p>
+
+    </section>
+
+
+    <section
+        id="errorBox"
+        class="card error hidden"
+    >
+    </section>
+
+
+    <section
+        id="resultsSection"
+        class="hidden"
+    >
+
+        <div class="card">
+
+            <h2>
+                Screening Results
+            </h2>
+
+            <p id="summary"></p>
+
+        </div>
+
+
+        <div id="results"></div>
+
+    </section>
+
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+
+</body>
+
+</html>
